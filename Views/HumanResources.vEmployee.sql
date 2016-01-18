@@ -1,3 +1,6 @@
+﻿-- Create View [HumanResources].[vEmployee]
+Print 'Create View [HumanResources].[vEmployee]'
+GO
 SET ANSI_NULLS ON
 SET QUOTED_IDENTIFIER ON
 GO
@@ -40,6 +43,9 @@ FROM [HumanResources].[Employee] e
     ON pp.[PhoneNumberTypeID] = pnt.[PhoneNumberTypeID]
     LEFT OUTER JOIN [Person].[EmailAddress] ea
     ON p.[BusinessEntityID] = ea.[BusinessEntityID];
+GO
+-- Create Extended Property MS_Description on [HumanResources].[vEmployee]
+Print 'Create Extended Property MS_Description on [HumanResources].[vEmployee]'
 GO
 EXEC sp_addextendedproperty N'MS_Description', N'Employee names and addresses.', 'SCHEMA', N'HumanResources', 'VIEW', N'vEmployee', NULL, NULL
 GO
