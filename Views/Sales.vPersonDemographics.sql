@@ -1,3 +1,6 @@
+﻿-- Create View [Sales].[vPersonDemographics]
+Print 'Create View [Sales].[vPersonDemographics]'
+GO
 SET ANSI_NULLS ON
 SET QUOTED_IDENTIFIER ON
 GO
@@ -34,6 +37,9 @@ FROM [Person].[Person] p
 CROSS APPLY p.[Demographics].nodes(N'declare default element namespace "http://schemas.microsoft.com/sqlserver/2004/07/adventure-works/IndividualSurvey"; 
     /IndividualSurvey') AS [IndividualSurvey](ref) 
 WHERE [Demographics] IS NOT NULL;
+GO
+-- Create Extended Property MS_Description on [Sales].[vPersonDemographics]
+Print 'Create Extended Property MS_Description on [Sales].[vPersonDemographics]'
 GO
 EXEC sp_addextendedproperty N'MS_Description', N'Displays the content from each element in the xml column Demographics for each customer in the Person.Person table.', 'SCHEMA', N'Sales', 'VIEW', N'vPersonDemographics', NULL, NULL
 GO

@@ -1,3 +1,6 @@
+﻿-- Create View [Sales].[vSalesPerson]
+Print 'Create View [Sales].[vSalesPerson]'
+GO
 SET ANSI_NULLS ON
 SET QUOTED_IDENTIFIER ON
 GO
@@ -48,6 +51,9 @@ FROM [Sales].[SalesPerson] s
 	ON pp.[BusinessEntityID] = p.[BusinessEntityID]
 	LEFT OUTER JOIN [Person].[PhoneNumberType] pnt
 	ON pnt.[PhoneNumberTypeID] = pp.[PhoneNumberTypeID];
+GO
+-- Create Extended Property MS_Description on [Sales].[vSalesPerson]
+Print 'Create Extended Property MS_Description on [Sales].[vSalesPerson]'
 GO
 EXEC sp_addextendedproperty N'MS_Description', N'Sales representiatives (names and addresses) and their sales-related information.', 'SCHEMA', N'Sales', 'VIEW', N'vSalesPerson', NULL, NULL
 GO

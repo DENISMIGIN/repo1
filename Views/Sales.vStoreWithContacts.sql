@@ -1,3 +1,6 @@
+﻿-- Create View [Sales].[vStoreWithContacts]
+Print 'Create View [Sales].[vStoreWithContacts]'
+GO
 SET ANSI_NULLS ON
 SET QUOTED_IDENTIFIER ON
 GO
@@ -29,6 +32,9 @@ FROM [Sales].[Store] s
 	ON pp.[BusinessEntityID] = p.[BusinessEntityID]
 	LEFT OUTER JOIN [Person].[PhoneNumberType] pnt
 	ON pnt.[PhoneNumberTypeID] = pp.[PhoneNumberTypeID];
+GO
+-- Create Extended Property MS_Description on [Sales].[vStoreWithContacts]
+Print 'Create Extended Property MS_Description on [Sales].[vStoreWithContacts]'
 GO
 EXEC sp_addextendedproperty N'MS_Description', N'Stores (including store contacts) that sell Adventure Works Cycles products to consumers.', 'SCHEMA', N'Sales', 'VIEW', N'vStoreWithContacts', NULL, NULL
 GO

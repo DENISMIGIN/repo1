@@ -1,3 +1,6 @@
+﻿-- Create View [Sales].[vStoreWithAddresses]
+Print 'Create View [Sales].[vStoreWithAddresses]'
+GO
 SET ANSI_NULLS ON
 SET QUOTED_IDENTIFIER ON
 GO
@@ -24,6 +27,9 @@ FROM [Sales].[Store] s
     ON cr.[CountryRegionCode] = sp.[CountryRegionCode]
     INNER JOIN [Person].[AddressType] at 
     ON at.[AddressTypeID] = bea.[AddressTypeID];
+GO
+-- Create Extended Property MS_Description on [Sales].[vStoreWithAddresses]
+Print 'Create Extended Property MS_Description on [Sales].[vStoreWithAddresses]'
 GO
 EXEC sp_addextendedproperty N'MS_Description', N'Stores (including store addresses) that sell Adventure Works Cycles products to consumers.', 'SCHEMA', N'Sales', 'VIEW', N'vStoreWithAddresses', NULL, NULL
 GO

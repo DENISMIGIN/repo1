@@ -1,3 +1,6 @@
+﻿-- Create View [Purchasing].[vVendorWithAddresses]
+Print 'Create View [Purchasing].[vVendorWithAddresses]'
+GO
 SET ANSI_NULLS ON
 SET QUOTED_IDENTIFIER ON
 GO
@@ -24,6 +27,9 @@ FROM [Purchasing].[Vendor] v
     ON cr.[CountryRegionCode] = sp.[CountryRegionCode]
     INNER JOIN [Person].[AddressType] at 
     ON at.[AddressTypeID] = bea.[AddressTypeID];
+GO
+-- Create Extended Property MS_Description on [Purchasing].[vVendorWithAddresses]
+Print 'Create Extended Property MS_Description on [Purchasing].[vVendorWithAddresses]'
 GO
 EXEC sp_addextendedproperty N'MS_Description', N'Vendor (company) names and addresses .', 'SCHEMA', N'Purchasing', 'VIEW', N'vVendorWithAddresses', NULL, NULL
 GO

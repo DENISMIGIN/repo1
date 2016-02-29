@@ -1,5 +1,8 @@
-SET ANSI_NULLS ON
+﻿SET ANSI_NULLS ON
 SET QUOTED_IDENTIFIER ON
+GO
+-- Create Procedure [dbo].[uspGetManagerEmployees]
+Print 'Create Procedure [dbo].[uspGetManagerEmployees]'
 GO
 
 CREATE PROCEDURE [dbo].[uspGetManagerEmployees]
@@ -36,7 +39,13 @@ BEGIN
     OPTION (MAXRECURSION 25) 
 END;
 GO
+-- Create Extended Property MS_Description on [dbo].[uspGetManagerEmployees]
+Print 'Create Extended Property MS_Description on [dbo].[uspGetManagerEmployees]'
+GO
 EXEC sp_addextendedproperty N'MS_Description', N'Stored procedure using a recursive query to return the direct and indirect employees of the specified manager.', 'SCHEMA', N'dbo', 'PROCEDURE', N'uspGetManagerEmployees', NULL, NULL
+GO
+-- Create Extended Property MS_Description on [dbo].[uspGetManagerEmployees]
+Print 'Create Extended Property MS_Description on [dbo].[uspGetManagerEmployees]'
 GO
 EXEC sp_addextendedproperty N'MS_Description', N'Input parameter for the stored procedure uspGetManagerEmployees. Enter a valid BusinessEntityID of the manager from the HumanResources.Employee table.', 'SCHEMA', N'dbo', 'PROCEDURE', N'uspGetManagerEmployees', 'PARAMETER', N'@BusinessEntityID'
 GO

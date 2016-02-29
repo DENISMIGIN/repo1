@@ -1,3 +1,6 @@
+﻿-- Create View [Sales].[vIndividualCustomer]
+Print 'Create View [Sales].[vIndividualCustomer]'
+GO
 SET ANSI_NULLS ON
 SET QUOTED_IDENTIFIER ON
 GO
@@ -43,6 +46,9 @@ FROM [Person].[Person] p
 	LEFT OUTER JOIN [Person].[PhoneNumberType] pnt
 	ON pnt.[PhoneNumberTypeID] = pp.[PhoneNumberTypeID]
 WHERE c.StoreID IS NULL;
+GO
+-- Create Extended Property MS_Description on [Sales].[vIndividualCustomer]
+Print 'Create Extended Property MS_Description on [Sales].[vIndividualCustomer]'
 GO
 EXEC sp_addextendedproperty N'MS_Description', N'Individual customers (names and addresses) that purchase Adventure Works Cycles products online.', 'SCHEMA', N'Sales', 'VIEW', N'vIndividualCustomer', NULL, NULL
 GO

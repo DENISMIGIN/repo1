@@ -1,6 +1,9 @@
-SET ANSI_NULLS ON
+﻿SET ANSI_NULLS ON
 SET QUOTED_IDENTIFIER ON
-SET ANSI_PADDING ON
+
+GO
+-- Create Table [Sales].[SalesOrderHeader]
+Print 'Create Table [Sales].[SalesOrderHeader]'
 GO
 CREATE TABLE [Sales].[SalesOrderHeader] (
 		[SalesOrderID]               [int] IDENTITY(1, 1) NOT FOR REPLICATION NOT NULL,
@@ -33,12 +36,20 @@ CREATE TABLE [Sales].[SalesOrderHeader] (
 		PRIMARY KEY
 		CLUSTERED
 		([SalesOrderID])
-	ON [PRIMARY]
-) ON [PRIMARY]
+)
+GO
+-- Create Extended Property MS_Description on [Sales].[SalesOrderHeader]
+Print 'Create Extended Property MS_Description on [Sales].[SalesOrderHeader]'
 GO
 EXEC sp_addextendedproperty N'MS_Description', N'Primary key (clustered) constraint', 'SCHEMA', N'Sales', 'TABLE', N'SalesOrderHeader', 'CONSTRAINT', N'PK_SalesOrderHeader_SalesOrderID'
 GO
+-- Create Extended Property MS_Description on [Sales].[SalesOrderHeader]
+Print 'Create Extended Property MS_Description on [Sales].[SalesOrderHeader]'
+GO
 EXEC sp_addextendedproperty N'MS_Description', N'Clustered index created by a primary key constraint.', 'SCHEMA', N'Sales', 'TABLE', N'SalesOrderHeader', 'INDEX', N'PK_SalesOrderHeader_SalesOrderID'
+GO
+-- Add Check Constraint CK_SalesOrderHeader_DueDate to [Sales].[SalesOrderHeader]
+Print 'Add Check Constraint CK_SalesOrderHeader_DueDate to [Sales].[SalesOrderHeader]'
 GO
 ALTER TABLE [Sales].[SalesOrderHeader]
 	ADD
@@ -46,10 +57,16 @@ ALTER TABLE [Sales].[SalesOrderHeader]
 	CHECK
 	([DueDate]>=[OrderDate])
 GO
+-- Create Extended Property MS_Description on [Sales].[SalesOrderHeader]
+Print 'Create Extended Property MS_Description on [Sales].[SalesOrderHeader]'
+GO
 EXEC sp_addextendedproperty N'MS_Description', N'Check constraint [DueDate] >= [OrderDate]', 'SCHEMA', N'Sales', 'TABLE', N'SalesOrderHeader', 'CONSTRAINT', N'CK_SalesOrderHeader_DueDate'
 GO
 ALTER TABLE [Sales].[SalesOrderHeader]
 CHECK CONSTRAINT [CK_SalesOrderHeader_DueDate]
+GO
+-- Add Check Constraint CK_SalesOrderHeader_Freight to [Sales].[SalesOrderHeader]
+Print 'Add Check Constraint CK_SalesOrderHeader_Freight to [Sales].[SalesOrderHeader]'
 GO
 ALTER TABLE [Sales].[SalesOrderHeader]
 	ADD
@@ -57,10 +74,16 @@ ALTER TABLE [Sales].[SalesOrderHeader]
 	CHECK
 	([Freight]>=(0.00))
 GO
+-- Create Extended Property MS_Description on [Sales].[SalesOrderHeader]
+Print 'Create Extended Property MS_Description on [Sales].[SalesOrderHeader]'
+GO
 EXEC sp_addextendedproperty N'MS_Description', N'Check constraint [Freight] >= (0.00)', 'SCHEMA', N'Sales', 'TABLE', N'SalesOrderHeader', 'CONSTRAINT', N'CK_SalesOrderHeader_Freight'
 GO
 ALTER TABLE [Sales].[SalesOrderHeader]
 CHECK CONSTRAINT [CK_SalesOrderHeader_Freight]
+GO
+-- Add Check Constraint CK_SalesOrderHeader_ShipDate to [Sales].[SalesOrderHeader]
+Print 'Add Check Constraint CK_SalesOrderHeader_ShipDate to [Sales].[SalesOrderHeader]'
 GO
 ALTER TABLE [Sales].[SalesOrderHeader]
 	ADD
@@ -68,10 +91,16 @@ ALTER TABLE [Sales].[SalesOrderHeader]
 	CHECK
 	([ShipDate]>=[OrderDate] OR [ShipDate] IS NULL)
 GO
+-- Create Extended Property MS_Description on [Sales].[SalesOrderHeader]
+Print 'Create Extended Property MS_Description on [Sales].[SalesOrderHeader]'
+GO
 EXEC sp_addextendedproperty N'MS_Description', N'Check constraint [ShipDate] >= [OrderDate] OR [ShipDate] IS NULL', 'SCHEMA', N'Sales', 'TABLE', N'SalesOrderHeader', 'CONSTRAINT', N'CK_SalesOrderHeader_ShipDate'
 GO
 ALTER TABLE [Sales].[SalesOrderHeader]
 CHECK CONSTRAINT [CK_SalesOrderHeader_ShipDate]
+GO
+-- Add Check Constraint CK_SalesOrderHeader_Status to [Sales].[SalesOrderHeader]
+Print 'Add Check Constraint CK_SalesOrderHeader_Status to [Sales].[SalesOrderHeader]'
 GO
 ALTER TABLE [Sales].[SalesOrderHeader]
 	ADD
@@ -79,10 +108,16 @@ ALTER TABLE [Sales].[SalesOrderHeader]
 	CHECK
 	([Status]>=(0) AND [Status]<=(8))
 GO
+-- Create Extended Property MS_Description on [Sales].[SalesOrderHeader]
+Print 'Create Extended Property MS_Description on [Sales].[SalesOrderHeader]'
+GO
 EXEC sp_addextendedproperty N'MS_Description', N'Check constraint [Status] BETWEEN (0) AND (8)', 'SCHEMA', N'Sales', 'TABLE', N'SalesOrderHeader', 'CONSTRAINT', N'CK_SalesOrderHeader_Status'
 GO
 ALTER TABLE [Sales].[SalesOrderHeader]
 CHECK CONSTRAINT [CK_SalesOrderHeader_Status]
+GO
+-- Add Check Constraint CK_SalesOrderHeader_SubTotal to [Sales].[SalesOrderHeader]
+Print 'Add Check Constraint CK_SalesOrderHeader_SubTotal to [Sales].[SalesOrderHeader]'
 GO
 ALTER TABLE [Sales].[SalesOrderHeader]
 	ADD
@@ -90,10 +125,16 @@ ALTER TABLE [Sales].[SalesOrderHeader]
 	CHECK
 	([SubTotal]>=(0.00))
 GO
+-- Create Extended Property MS_Description on [Sales].[SalesOrderHeader]
+Print 'Create Extended Property MS_Description on [Sales].[SalesOrderHeader]'
+GO
 EXEC sp_addextendedproperty N'MS_Description', N'Check constraint [SubTotal] >= (0.00)', 'SCHEMA', N'Sales', 'TABLE', N'SalesOrderHeader', 'CONSTRAINT', N'CK_SalesOrderHeader_SubTotal'
 GO
 ALTER TABLE [Sales].[SalesOrderHeader]
 CHECK CONSTRAINT [CK_SalesOrderHeader_SubTotal]
+GO
+-- Add Check Constraint CK_SalesOrderHeader_TaxAmt to [Sales].[SalesOrderHeader]
+Print 'Add Check Constraint CK_SalesOrderHeader_TaxAmt to [Sales].[SalesOrderHeader]'
 GO
 ALTER TABLE [Sales].[SalesOrderHeader]
 	ADD
@@ -101,73 +142,133 @@ ALTER TABLE [Sales].[SalesOrderHeader]
 	CHECK
 	([TaxAmt]>=(0.00))
 GO
+-- Create Extended Property MS_Description on [Sales].[SalesOrderHeader]
+Print 'Create Extended Property MS_Description on [Sales].[SalesOrderHeader]'
+GO
 EXEC sp_addextendedproperty N'MS_Description', N'Check constraint [TaxAmt] >= (0.00)', 'SCHEMA', N'Sales', 'TABLE', N'SalesOrderHeader', 'CONSTRAINT', N'CK_SalesOrderHeader_TaxAmt'
 GO
 ALTER TABLE [Sales].[SalesOrderHeader]
 CHECK CONSTRAINT [CK_SalesOrderHeader_TaxAmt]
+GO
+-- Add Default Constraint DF_SalesOrderHeader_Freight to [Sales].[SalesOrderHeader]
+Print 'Add Default Constraint DF_SalesOrderHeader_Freight to [Sales].[SalesOrderHeader]'
 GO
 ALTER TABLE [Sales].[SalesOrderHeader]
 	ADD
 	CONSTRAINT [DF_SalesOrderHeader_Freight]
 	DEFAULT ((0.00)) FOR [Freight]
 GO
+-- Create Extended Property MS_Description on [Sales].[SalesOrderHeader]
+Print 'Create Extended Property MS_Description on [Sales].[SalesOrderHeader]'
+GO
 EXEC sp_addextendedproperty N'MS_Description', N'Default constraint value of 0.0', 'SCHEMA', N'Sales', 'TABLE', N'SalesOrderHeader', 'CONSTRAINT', N'DF_SalesOrderHeader_Freight'
+GO
+-- Add Default Constraint DF_SalesOrderHeader_ModifiedDate to [Sales].[SalesOrderHeader]
+Print 'Add Default Constraint DF_SalesOrderHeader_ModifiedDate to [Sales].[SalesOrderHeader]'
 GO
 ALTER TABLE [Sales].[SalesOrderHeader]
 	ADD
 	CONSTRAINT [DF_SalesOrderHeader_ModifiedDate]
 	DEFAULT (getdate()) FOR [ModifiedDate]
 GO
+-- Create Extended Property MS_Description on [Sales].[SalesOrderHeader]
+Print 'Create Extended Property MS_Description on [Sales].[SalesOrderHeader]'
+GO
 EXEC sp_addextendedproperty N'MS_Description', N'Default constraint value of GETDATE()', 'SCHEMA', N'Sales', 'TABLE', N'SalesOrderHeader', 'CONSTRAINT', N'DF_SalesOrderHeader_ModifiedDate'
+GO
+-- Add Default Constraint DF_SalesOrderHeader_OnlineOrderFlag to [Sales].[SalesOrderHeader]
+Print 'Add Default Constraint DF_SalesOrderHeader_OnlineOrderFlag to [Sales].[SalesOrderHeader]'
 GO
 ALTER TABLE [Sales].[SalesOrderHeader]
 	ADD
 	CONSTRAINT [DF_SalesOrderHeader_OnlineOrderFlag]
 	DEFAULT ((1)) FOR [OnlineOrderFlag]
 GO
+-- Create Extended Property MS_Description on [Sales].[SalesOrderHeader]
+Print 'Create Extended Property MS_Description on [Sales].[SalesOrderHeader]'
+GO
 EXEC sp_addextendedproperty N'MS_Description', N'Default constraint value of 1 (TRUE)', 'SCHEMA', N'Sales', 'TABLE', N'SalesOrderHeader', 'CONSTRAINT', N'DF_SalesOrderHeader_OnlineOrderFlag'
+GO
+-- Add Default Constraint DF_SalesOrderHeader_OrderDate to [Sales].[SalesOrderHeader]
+Print 'Add Default Constraint DF_SalesOrderHeader_OrderDate to [Sales].[SalesOrderHeader]'
 GO
 ALTER TABLE [Sales].[SalesOrderHeader]
 	ADD
 	CONSTRAINT [DF_SalesOrderHeader_OrderDate]
 	DEFAULT (getdate()) FOR [OrderDate]
 GO
+-- Create Extended Property MS_Description on [Sales].[SalesOrderHeader]
+Print 'Create Extended Property MS_Description on [Sales].[SalesOrderHeader]'
+GO
 EXEC sp_addextendedproperty N'MS_Description', N'Default constraint value of GETDATE()', 'SCHEMA', N'Sales', 'TABLE', N'SalesOrderHeader', 'CONSTRAINT', N'DF_SalesOrderHeader_OrderDate'
+GO
+-- Add Default Constraint DF_SalesOrderHeader_RevisionNumber to [Sales].[SalesOrderHeader]
+Print 'Add Default Constraint DF_SalesOrderHeader_RevisionNumber to [Sales].[SalesOrderHeader]'
 GO
 ALTER TABLE [Sales].[SalesOrderHeader]
 	ADD
 	CONSTRAINT [DF_SalesOrderHeader_RevisionNumber]
 	DEFAULT ((0)) FOR [RevisionNumber]
 GO
+-- Create Extended Property MS_Description on [Sales].[SalesOrderHeader]
+Print 'Create Extended Property MS_Description on [Sales].[SalesOrderHeader]'
+GO
 EXEC sp_addextendedproperty N'MS_Description', N'Default constraint value of 0', 'SCHEMA', N'Sales', 'TABLE', N'SalesOrderHeader', 'CONSTRAINT', N'DF_SalesOrderHeader_RevisionNumber'
+GO
+-- Add Default Constraint DF_SalesOrderHeader_rowguid to [Sales].[SalesOrderHeader]
+Print 'Add Default Constraint DF_SalesOrderHeader_rowguid to [Sales].[SalesOrderHeader]'
 GO
 ALTER TABLE [Sales].[SalesOrderHeader]
 	ADD
 	CONSTRAINT [DF_SalesOrderHeader_rowguid]
 	DEFAULT (newid()) FOR [rowguid]
 GO
+-- Create Extended Property MS_Description on [Sales].[SalesOrderHeader]
+Print 'Create Extended Property MS_Description on [Sales].[SalesOrderHeader]'
+GO
 EXEC sp_addextendedproperty N'MS_Description', N'Default constraint value of NEWID()', 'SCHEMA', N'Sales', 'TABLE', N'SalesOrderHeader', 'CONSTRAINT', N'DF_SalesOrderHeader_rowguid'
+GO
+-- Add Default Constraint DF_SalesOrderHeader_Status to [Sales].[SalesOrderHeader]
+Print 'Add Default Constraint DF_SalesOrderHeader_Status to [Sales].[SalesOrderHeader]'
 GO
 ALTER TABLE [Sales].[SalesOrderHeader]
 	ADD
 	CONSTRAINT [DF_SalesOrderHeader_Status]
 	DEFAULT ((1)) FOR [Status]
 GO
+-- Create Extended Property MS_Description on [Sales].[SalesOrderHeader]
+Print 'Create Extended Property MS_Description on [Sales].[SalesOrderHeader]'
+GO
 EXEC sp_addextendedproperty N'MS_Description', N'Default constraint value of 1', 'SCHEMA', N'Sales', 'TABLE', N'SalesOrderHeader', 'CONSTRAINT', N'DF_SalesOrderHeader_Status'
+GO
+-- Add Default Constraint DF_SalesOrderHeader_SubTotal to [Sales].[SalesOrderHeader]
+Print 'Add Default Constraint DF_SalesOrderHeader_SubTotal to [Sales].[SalesOrderHeader]'
 GO
 ALTER TABLE [Sales].[SalesOrderHeader]
 	ADD
 	CONSTRAINT [DF_SalesOrderHeader_SubTotal]
 	DEFAULT ((0.00)) FOR [SubTotal]
 GO
+-- Create Extended Property MS_Description on [Sales].[SalesOrderHeader]
+Print 'Create Extended Property MS_Description on [Sales].[SalesOrderHeader]'
+GO
 EXEC sp_addextendedproperty N'MS_Description', N'Default constraint value of 0.0', 'SCHEMA', N'Sales', 'TABLE', N'SalesOrderHeader', 'CONSTRAINT', N'DF_SalesOrderHeader_SubTotal'
+GO
+-- Add Default Constraint DF_SalesOrderHeader_TaxAmt to [Sales].[SalesOrderHeader]
+Print 'Add Default Constraint DF_SalesOrderHeader_TaxAmt to [Sales].[SalesOrderHeader]'
 GO
 ALTER TABLE [Sales].[SalesOrderHeader]
 	ADD
 	CONSTRAINT [DF_SalesOrderHeader_TaxAmt]
 	DEFAULT ((0.00)) FOR [TaxAmt]
 GO
+-- Create Extended Property MS_Description on [Sales].[SalesOrderHeader]
+Print 'Create Extended Property MS_Description on [Sales].[SalesOrderHeader]'
+GO
 EXEC sp_addextendedproperty N'MS_Description', N'Default constraint value of 0.0', 'SCHEMA', N'Sales', 'TABLE', N'SalesOrderHeader', 'CONSTRAINT', N'DF_SalesOrderHeader_TaxAmt'
+GO
+-- Create Foreign Key FK_SalesOrderHeader_Address_BillToAddressID on [Sales].[SalesOrderHeader]
+Print 'Create Foreign Key FK_SalesOrderHeader_Address_BillToAddressID on [Sales].[SalesOrderHeader]'
 GO
 ALTER TABLE [Sales].[SalesOrderHeader]
 	WITH CHECK
@@ -177,7 +278,13 @@ ALTER TABLE [Sales].[SalesOrderHeader]
 	CHECK CONSTRAINT [FK_SalesOrderHeader_Address_BillToAddressID]
 
 GO
+-- Create Extended Property MS_Description on [Sales].[SalesOrderHeader]
+Print 'Create Extended Property MS_Description on [Sales].[SalesOrderHeader]'
+GO
 EXEC sp_addextendedproperty N'MS_Description', N'Foreign key constraint referencing Address.AddressID.', 'SCHEMA', N'Sales', 'TABLE', N'SalesOrderHeader', 'CONSTRAINT', N'FK_SalesOrderHeader_Address_BillToAddressID'
+GO
+-- Create Foreign Key FK_SalesOrderHeader_Address_ShipToAddressID on [Sales].[SalesOrderHeader]
+Print 'Create Foreign Key FK_SalesOrderHeader_Address_ShipToAddressID on [Sales].[SalesOrderHeader]'
 GO
 ALTER TABLE [Sales].[SalesOrderHeader]
 	WITH CHECK
@@ -187,7 +294,13 @@ ALTER TABLE [Sales].[SalesOrderHeader]
 	CHECK CONSTRAINT [FK_SalesOrderHeader_Address_ShipToAddressID]
 
 GO
+-- Create Extended Property MS_Description on [Sales].[SalesOrderHeader]
+Print 'Create Extended Property MS_Description on [Sales].[SalesOrderHeader]'
+GO
 EXEC sp_addextendedproperty N'MS_Description', N'Foreign key constraint referencing Address.AddressID.', 'SCHEMA', N'Sales', 'TABLE', N'SalesOrderHeader', 'CONSTRAINT', N'FK_SalesOrderHeader_Address_ShipToAddressID'
+GO
+-- Create Foreign Key FK_SalesOrderHeader_CreditCard_CreditCardID on [Sales].[SalesOrderHeader]
+Print 'Create Foreign Key FK_SalesOrderHeader_CreditCard_CreditCardID on [Sales].[SalesOrderHeader]'
 GO
 ALTER TABLE [Sales].[SalesOrderHeader]
 	WITH CHECK
@@ -197,7 +310,13 @@ ALTER TABLE [Sales].[SalesOrderHeader]
 	CHECK CONSTRAINT [FK_SalesOrderHeader_CreditCard_CreditCardID]
 
 GO
+-- Create Extended Property MS_Description on [Sales].[SalesOrderHeader]
+Print 'Create Extended Property MS_Description on [Sales].[SalesOrderHeader]'
+GO
 EXEC sp_addextendedproperty N'MS_Description', N'Foreign key constraint referencing CreditCard.CreditCardID.', 'SCHEMA', N'Sales', 'TABLE', N'SalesOrderHeader', 'CONSTRAINT', N'FK_SalesOrderHeader_CreditCard_CreditCardID'
+GO
+-- Create Foreign Key FK_SalesOrderHeader_CurrencyRate_CurrencyRateID on [Sales].[SalesOrderHeader]
+Print 'Create Foreign Key FK_SalesOrderHeader_CurrencyRate_CurrencyRateID on [Sales].[SalesOrderHeader]'
 GO
 ALTER TABLE [Sales].[SalesOrderHeader]
 	WITH CHECK
@@ -207,7 +326,13 @@ ALTER TABLE [Sales].[SalesOrderHeader]
 	CHECK CONSTRAINT [FK_SalesOrderHeader_CurrencyRate_CurrencyRateID]
 
 GO
+-- Create Extended Property MS_Description on [Sales].[SalesOrderHeader]
+Print 'Create Extended Property MS_Description on [Sales].[SalesOrderHeader]'
+GO
 EXEC sp_addextendedproperty N'MS_Description', N'Foreign key constraint referencing CurrencyRate.CurrencyRateID.', 'SCHEMA', N'Sales', 'TABLE', N'SalesOrderHeader', 'CONSTRAINT', N'FK_SalesOrderHeader_CurrencyRate_CurrencyRateID'
+GO
+-- Create Foreign Key FK_SalesOrderHeader_Customer_CustomerID on [Sales].[SalesOrderHeader]
+Print 'Create Foreign Key FK_SalesOrderHeader_Customer_CustomerID on [Sales].[SalesOrderHeader]'
 GO
 ALTER TABLE [Sales].[SalesOrderHeader]
 	WITH CHECK
@@ -217,7 +342,13 @@ ALTER TABLE [Sales].[SalesOrderHeader]
 	CHECK CONSTRAINT [FK_SalesOrderHeader_Customer_CustomerID]
 
 GO
+-- Create Extended Property MS_Description on [Sales].[SalesOrderHeader]
+Print 'Create Extended Property MS_Description on [Sales].[SalesOrderHeader]'
+GO
 EXEC sp_addextendedproperty N'MS_Description', N'Foreign key constraint referencing Customer.CustomerID.', 'SCHEMA', N'Sales', 'TABLE', N'SalesOrderHeader', 'CONSTRAINT', N'FK_SalesOrderHeader_Customer_CustomerID'
+GO
+-- Create Foreign Key FK_SalesOrderHeader_SalesPerson_SalesPersonID on [Sales].[SalesOrderHeader]
+Print 'Create Foreign Key FK_SalesOrderHeader_SalesPerson_SalesPersonID on [Sales].[SalesOrderHeader]'
 GO
 ALTER TABLE [Sales].[SalesOrderHeader]
 	WITH CHECK
@@ -227,7 +358,13 @@ ALTER TABLE [Sales].[SalesOrderHeader]
 	CHECK CONSTRAINT [FK_SalesOrderHeader_SalesPerson_SalesPersonID]
 
 GO
+-- Create Extended Property MS_Description on [Sales].[SalesOrderHeader]
+Print 'Create Extended Property MS_Description on [Sales].[SalesOrderHeader]'
+GO
 EXEC sp_addextendedproperty N'MS_Description', N'Foreign key constraint referencing SalesPerson.SalesPersonID.', 'SCHEMA', N'Sales', 'TABLE', N'SalesOrderHeader', 'CONSTRAINT', N'FK_SalesOrderHeader_SalesPerson_SalesPersonID'
+GO
+-- Create Foreign Key FK_SalesOrderHeader_SalesTerritory_TerritoryID on [Sales].[SalesOrderHeader]
+Print 'Create Foreign Key FK_SalesOrderHeader_SalesTerritory_TerritoryID on [Sales].[SalesOrderHeader]'
 GO
 ALTER TABLE [Sales].[SalesOrderHeader]
 	WITH CHECK
@@ -237,7 +374,13 @@ ALTER TABLE [Sales].[SalesOrderHeader]
 	CHECK CONSTRAINT [FK_SalesOrderHeader_SalesTerritory_TerritoryID]
 
 GO
+-- Create Extended Property MS_Description on [Sales].[SalesOrderHeader]
+Print 'Create Extended Property MS_Description on [Sales].[SalesOrderHeader]'
+GO
 EXEC sp_addextendedproperty N'MS_Description', N'Foreign key constraint referencing SalesTerritory.TerritoryID.', 'SCHEMA', N'Sales', 'TABLE', N'SalesOrderHeader', 'CONSTRAINT', N'FK_SalesOrderHeader_SalesTerritory_TerritoryID'
+GO
+-- Create Foreign Key FK_SalesOrderHeader_ShipMethod_ShipMethodID on [Sales].[SalesOrderHeader]
+Print 'Create Foreign Key FK_SalesOrderHeader_ShipMethod_ShipMethodID on [Sales].[SalesOrderHeader]'
 GO
 ALTER TABLE [Sales].[SalesOrderHeader]
 	WITH CHECK
@@ -247,83 +390,187 @@ ALTER TABLE [Sales].[SalesOrderHeader]
 	CHECK CONSTRAINT [FK_SalesOrderHeader_ShipMethod_ShipMethodID]
 
 GO
+-- Create Extended Property MS_Description on [Sales].[SalesOrderHeader]
+Print 'Create Extended Property MS_Description on [Sales].[SalesOrderHeader]'
+GO
 EXEC sp_addextendedproperty N'MS_Description', N'Foreign key constraint referencing ShipMethod.ShipMethodID.', 'SCHEMA', N'Sales', 'TABLE', N'SalesOrderHeader', 'CONSTRAINT', N'FK_SalesOrderHeader_ShipMethod_ShipMethodID'
+GO
+-- Create Index AK_SalesOrderHeader_rowguid on [Sales].[SalesOrderHeader]
+Print 'Create Index AK_SalesOrderHeader_rowguid on [Sales].[SalesOrderHeader]'
 GO
 CREATE UNIQUE NONCLUSTERED INDEX [AK_SalesOrderHeader_rowguid]
 	ON [Sales].[SalesOrderHeader] ([rowguid])
-	ON [PRIMARY]
+GO
+-- Create Extended Property MS_Description on [Sales].[SalesOrderHeader]
+Print 'Create Extended Property MS_Description on [Sales].[SalesOrderHeader]'
 GO
 EXEC sp_addextendedproperty N'MS_Description', N'Unique nonclustered index. Used to support replication samples.', 'SCHEMA', N'Sales', 'TABLE', N'SalesOrderHeader', 'INDEX', N'AK_SalesOrderHeader_rowguid'
 GO
+-- Create Index AK_SalesOrderHeader_SalesOrderNumber on [Sales].[SalesOrderHeader]
+Print 'Create Index AK_SalesOrderHeader_SalesOrderNumber on [Sales].[SalesOrderHeader]'
+GO
 CREATE UNIQUE NONCLUSTERED INDEX [AK_SalesOrderHeader_SalesOrderNumber]
 	ON [Sales].[SalesOrderHeader] ([SalesOrderNumber])
-	ON [PRIMARY]
+GO
+-- Create Extended Property MS_Description on [Sales].[SalesOrderHeader]
+Print 'Create Extended Property MS_Description on [Sales].[SalesOrderHeader]'
 GO
 EXEC sp_addextendedproperty N'MS_Description', N'Unique nonclustered index.', 'SCHEMA', N'Sales', 'TABLE', N'SalesOrderHeader', 'INDEX', N'AK_SalesOrderHeader_SalesOrderNumber'
 GO
+-- Create Index IX_SalesOrderHeader_CustomerID on [Sales].[SalesOrderHeader]
+Print 'Create Index IX_SalesOrderHeader_CustomerID on [Sales].[SalesOrderHeader]'
+GO
 CREATE NONCLUSTERED INDEX [IX_SalesOrderHeader_CustomerID]
 	ON [Sales].[SalesOrderHeader] ([CustomerID])
-	ON [PRIMARY]
+GO
+-- Create Extended Property MS_Description on [Sales].[SalesOrderHeader]
+Print 'Create Extended Property MS_Description on [Sales].[SalesOrderHeader]'
 GO
 EXEC sp_addextendedproperty N'MS_Description', N'Nonclustered index.', 'SCHEMA', N'Sales', 'TABLE', N'SalesOrderHeader', 'INDEX', N'IX_SalesOrderHeader_CustomerID'
 GO
+-- Create Index IX_SalesOrderHeader_SalesPersonID on [Sales].[SalesOrderHeader]
+Print 'Create Index IX_SalesOrderHeader_SalesPersonID on [Sales].[SalesOrderHeader]'
+GO
 CREATE NONCLUSTERED INDEX [IX_SalesOrderHeader_SalesPersonID]
 	ON [Sales].[SalesOrderHeader] ([SalesPersonID])
-	ON [PRIMARY]
+GO
+-- Create Extended Property MS_Description on [Sales].[SalesOrderHeader]
+Print 'Create Extended Property MS_Description on [Sales].[SalesOrderHeader]'
 GO
 EXEC sp_addextendedproperty N'MS_Description', N'Nonclustered index.', 'SCHEMA', N'Sales', 'TABLE', N'SalesOrderHeader', 'INDEX', N'IX_SalesOrderHeader_SalesPersonID'
 GO
+-- Create Extended Property MS_Description on [Sales].[SalesOrderHeader]
+Print 'Create Extended Property MS_Description on [Sales].[SalesOrderHeader]'
+GO
 EXEC sp_addextendedproperty N'MS_Description', N'Financial accounting number reference.', 'SCHEMA', N'Sales', 'TABLE', N'SalesOrderHeader', 'COLUMN', N'AccountNumber'
+GO
+-- Create Extended Property MS_Description on [Sales].[SalesOrderHeader]
+Print 'Create Extended Property MS_Description on [Sales].[SalesOrderHeader]'
 GO
 EXEC sp_addextendedproperty N'MS_Description', N'Customer billing address. Foreign key to Address.AddressID.', 'SCHEMA', N'Sales', 'TABLE', N'SalesOrderHeader', 'COLUMN', N'BillToAddressID'
 GO
+-- Create Extended Property MS_Description on [Sales].[SalesOrderHeader]
+Print 'Create Extended Property MS_Description on [Sales].[SalesOrderHeader]'
+GO
 EXEC sp_addextendedproperty N'MS_Description', N'Sales representative comments.', 'SCHEMA', N'Sales', 'TABLE', N'SalesOrderHeader', 'COLUMN', N'Comment'
+GO
+-- Create Extended Property MS_Description on [Sales].[SalesOrderHeader]
+Print 'Create Extended Property MS_Description on [Sales].[SalesOrderHeader]'
 GO
 EXEC sp_addextendedproperty N'MS_Description', N'Approval code provided by the credit card company.', 'SCHEMA', N'Sales', 'TABLE', N'SalesOrderHeader', 'COLUMN', N'CreditCardApprovalCode'
 GO
+-- Create Extended Property MS_Description on [Sales].[SalesOrderHeader]
+Print 'Create Extended Property MS_Description on [Sales].[SalesOrderHeader]'
+GO
 EXEC sp_addextendedproperty N'MS_Description', N'Credit card identification number. Foreign key to CreditCard.CreditCardID.', 'SCHEMA', N'Sales', 'TABLE', N'SalesOrderHeader', 'COLUMN', N'CreditCardID'
+GO
+-- Create Extended Property MS_Description on [Sales].[SalesOrderHeader]
+Print 'Create Extended Property MS_Description on [Sales].[SalesOrderHeader]'
 GO
 EXEC sp_addextendedproperty N'MS_Description', N'Currency exchange rate used. Foreign key to CurrencyRate.CurrencyRateID.', 'SCHEMA', N'Sales', 'TABLE', N'SalesOrderHeader', 'COLUMN', N'CurrencyRateID'
 GO
+-- Create Extended Property MS_Description on [Sales].[SalesOrderHeader]
+Print 'Create Extended Property MS_Description on [Sales].[SalesOrderHeader]'
+GO
 EXEC sp_addextendedproperty N'MS_Description', N'Customer identification number. Foreign key to Customer.BusinessEntityID.', 'SCHEMA', N'Sales', 'TABLE', N'SalesOrderHeader', 'COLUMN', N'CustomerID'
+GO
+-- Create Extended Property MS_Description on [Sales].[SalesOrderHeader]
+Print 'Create Extended Property MS_Description on [Sales].[SalesOrderHeader]'
 GO
 EXEC sp_addextendedproperty N'MS_Description', N'Date the order is due to the customer.', 'SCHEMA', N'Sales', 'TABLE', N'SalesOrderHeader', 'COLUMN', N'DueDate'
 GO
+-- Create Extended Property MS_Description on [Sales].[SalesOrderHeader]
+Print 'Create Extended Property MS_Description on [Sales].[SalesOrderHeader]'
+GO
 EXEC sp_addextendedproperty N'MS_Description', N'Shipping cost.', 'SCHEMA', N'Sales', 'TABLE', N'SalesOrderHeader', 'COLUMN', N'Freight'
+GO
+-- Create Extended Property MS_Description on [Sales].[SalesOrderHeader]
+Print 'Create Extended Property MS_Description on [Sales].[SalesOrderHeader]'
 GO
 EXEC sp_addextendedproperty N'MS_Description', N'Date and time the record was last updated.', 'SCHEMA', N'Sales', 'TABLE', N'SalesOrderHeader', 'COLUMN', N'ModifiedDate'
 GO
+-- Create Extended Property MS_Description on [Sales].[SalesOrderHeader]
+Print 'Create Extended Property MS_Description on [Sales].[SalesOrderHeader]'
+GO
 EXEC sp_addextendedproperty N'MS_Description', N'0 = Order placed by sales person. 1 = Order placed online by customer.', 'SCHEMA', N'Sales', 'TABLE', N'SalesOrderHeader', 'COLUMN', N'OnlineOrderFlag'
+GO
+-- Create Extended Property MS_Description on [Sales].[SalesOrderHeader]
+Print 'Create Extended Property MS_Description on [Sales].[SalesOrderHeader]'
 GO
 EXEC sp_addextendedproperty N'MS_Description', N'Dates the sales order was created.', 'SCHEMA', N'Sales', 'TABLE', N'SalesOrderHeader', 'COLUMN', N'OrderDate'
 GO
+-- Create Extended Property MS_Description on [Sales].[SalesOrderHeader]
+Print 'Create Extended Property MS_Description on [Sales].[SalesOrderHeader]'
+GO
 EXEC sp_addextendedproperty N'MS_Description', N'Customer purchase order number reference. ', 'SCHEMA', N'Sales', 'TABLE', N'SalesOrderHeader', 'COLUMN', N'PurchaseOrderNumber'
+GO
+-- Create Extended Property MS_Description on [Sales].[SalesOrderHeader]
+Print 'Create Extended Property MS_Description on [Sales].[SalesOrderHeader]'
 GO
 EXEC sp_addextendedproperty N'MS_Description', N'Incremental number to track changes to the sales order over time.', 'SCHEMA', N'Sales', 'TABLE', N'SalesOrderHeader', 'COLUMN', N'RevisionNumber'
 GO
+-- Create Extended Property MS_Description on [Sales].[SalesOrderHeader]
+Print 'Create Extended Property MS_Description on [Sales].[SalesOrderHeader]'
+GO
 EXEC sp_addextendedproperty N'MS_Description', N'ROWGUIDCOL number uniquely identifying the record. Used to support a merge replication sample.', 'SCHEMA', N'Sales', 'TABLE', N'SalesOrderHeader', 'COLUMN', N'rowguid'
+GO
+-- Create Extended Property MS_Description on [Sales].[SalesOrderHeader]
+Print 'Create Extended Property MS_Description on [Sales].[SalesOrderHeader]'
 GO
 EXEC sp_addextendedproperty N'MS_Description', N'Primary key.', 'SCHEMA', N'Sales', 'TABLE', N'SalesOrderHeader', 'COLUMN', N'SalesOrderID'
 GO
+-- Create Extended Property MS_Description on [Sales].[SalesOrderHeader]
+Print 'Create Extended Property MS_Description on [Sales].[SalesOrderHeader]'
+GO
 EXEC sp_addextendedproperty N'MS_Description', N'Unique sales order identification number.', 'SCHEMA', N'Sales', 'TABLE', N'SalesOrderHeader', 'COLUMN', N'SalesOrderNumber'
+GO
+-- Create Extended Property MS_Description on [Sales].[SalesOrderHeader]
+Print 'Create Extended Property MS_Description on [Sales].[SalesOrderHeader]'
 GO
 EXEC sp_addextendedproperty N'MS_Description', N'Sales person who created the sales order. Foreign key to SalesPerson.BusinessEntityID.', 'SCHEMA', N'Sales', 'TABLE', N'SalesOrderHeader', 'COLUMN', N'SalesPersonID'
 GO
+-- Create Extended Property MS_Description on [Sales].[SalesOrderHeader]
+Print 'Create Extended Property MS_Description on [Sales].[SalesOrderHeader]'
+GO
 EXEC sp_addextendedproperty N'MS_Description', N'Date the order was shipped to the customer.', 'SCHEMA', N'Sales', 'TABLE', N'SalesOrderHeader', 'COLUMN', N'ShipDate'
+GO
+-- Create Extended Property MS_Description on [Sales].[SalesOrderHeader]
+Print 'Create Extended Property MS_Description on [Sales].[SalesOrderHeader]'
 GO
 EXEC sp_addextendedproperty N'MS_Description', N'Shipping method. Foreign key to ShipMethod.ShipMethodID.', 'SCHEMA', N'Sales', 'TABLE', N'SalesOrderHeader', 'COLUMN', N'ShipMethodID'
 GO
+-- Create Extended Property MS_Description on [Sales].[SalesOrderHeader]
+Print 'Create Extended Property MS_Description on [Sales].[SalesOrderHeader]'
+GO
 EXEC sp_addextendedproperty N'MS_Description', N'Customer shipping address. Foreign key to Address.AddressID.', 'SCHEMA', N'Sales', 'TABLE', N'SalesOrderHeader', 'COLUMN', N'ShipToAddressID'
+GO
+-- Create Extended Property MS_Description on [Sales].[SalesOrderHeader]
+Print 'Create Extended Property MS_Description on [Sales].[SalesOrderHeader]'
 GO
 EXEC sp_addextendedproperty N'MS_Description', N'Order current status. 1 = In process; 2 = Approved; 3 = Backordered; 4 = Rejected; 5 = Shipped; 6 = Cancelled', 'SCHEMA', N'Sales', 'TABLE', N'SalesOrderHeader', 'COLUMN', N'Status'
 GO
+-- Create Extended Property MS_Description on [Sales].[SalesOrderHeader]
+Print 'Create Extended Property MS_Description on [Sales].[SalesOrderHeader]'
+GO
 EXEC sp_addextendedproperty N'MS_Description', N'Sales subtotal. Computed as SUM(SalesOrderDetail.LineTotal)for the appropriate SalesOrderID.', 'SCHEMA', N'Sales', 'TABLE', N'SalesOrderHeader', 'COLUMN', N'SubTotal'
+GO
+-- Create Extended Property MS_Description on [Sales].[SalesOrderHeader]
+Print 'Create Extended Property MS_Description on [Sales].[SalesOrderHeader]'
 GO
 EXEC sp_addextendedproperty N'MS_Description', N'Tax amount.', 'SCHEMA', N'Sales', 'TABLE', N'SalesOrderHeader', 'COLUMN', N'TaxAmt'
 GO
+-- Create Extended Property MS_Description on [Sales].[SalesOrderHeader]
+Print 'Create Extended Property MS_Description on [Sales].[SalesOrderHeader]'
+GO
 EXEC sp_addextendedproperty N'MS_Description', N'Territory in which the sale was made. Foreign key to SalesTerritory.SalesTerritoryID.', 'SCHEMA', N'Sales', 'TABLE', N'SalesOrderHeader', 'COLUMN', N'TerritoryID'
 GO
+-- Create Extended Property MS_Description on [Sales].[SalesOrderHeader]
+Print 'Create Extended Property MS_Description on [Sales].[SalesOrderHeader]'
+GO
 EXEC sp_addextendedproperty N'MS_Description', N'Total due from customer. Computed as Subtotal + TaxAmt + Freight.', 'SCHEMA', N'Sales', 'TABLE', N'SalesOrderHeader', 'COLUMN', N'TotalDue'
+GO
+-- Create Extended Property MS_Description on [Sales].[SalesOrderHeader]
+Print 'Create Extended Property MS_Description on [Sales].[SalesOrderHeader]'
 GO
 EXEC sp_addextendedproperty N'MS_Description', N'General sales order information.', 'SCHEMA', N'Sales', 'TABLE', N'SalesOrderHeader', NULL, NULL
 GO

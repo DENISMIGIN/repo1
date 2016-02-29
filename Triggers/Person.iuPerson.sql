@@ -1,5 +1,8 @@
-SET ANSI_NULLS ON
+﻿SET ANSI_NULLS ON
 SET QUOTED_IDENTIFIER ON
+GO
+-- Create Trigger [Person].[iuPerson]
+Print 'Create Trigger [Person].[iuPerson]'
 GO
 
 CREATE TRIGGER [Person].[iuPerson] ON [Person].[Person] 
@@ -36,6 +39,9 @@ BEGIN
                 /IndividualSurvey/TotalPurchaseYTD') <> 1;
     END;
 END;
+GO
+-- Create Extended Property MS_Description on [Person].[iuPerson]
+Print 'Create Extended Property MS_Description on [Person].[iuPerson]'
 GO
 EXEC sp_addextendedproperty N'MS_Description', N'AFTER INSERT, UPDATE trigger inserting Individual only if the Customer does not exist in the Store table and setting the ModifiedDate column in the Person table to the current date.', 'SCHEMA', N'Person', 'TABLE', N'Person', 'TRIGGER', N'iuPerson'
 GO

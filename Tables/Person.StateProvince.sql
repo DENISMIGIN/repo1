@@ -1,6 +1,9 @@
-SET ANSI_NULLS ON
+﻿SET ANSI_NULLS ON
 SET QUOTED_IDENTIFIER ON
-SET ANSI_PADDING ON
+
+GO
+-- Create Table [Person].[StateProvince]
+Print 'Create Table [Person].[StateProvince]'
 GO
 CREATE TABLE [Person].[StateProvince] (
 		[StateProvinceID]             [int] IDENTITY(1, 1) NOT NULL,
@@ -15,33 +18,59 @@ CREATE TABLE [Person].[StateProvince] (
 		PRIMARY KEY
 		CLUSTERED
 		([StateProvinceID])
-	ON [PRIMARY]
-) ON [PRIMARY]
+)
+GO
+-- Create Extended Property MS_Description on [Person].[StateProvince]
+Print 'Create Extended Property MS_Description on [Person].[StateProvince]'
 GO
 EXEC sp_addextendedproperty N'MS_Description', N'Primary key (clustered) constraint', 'SCHEMA', N'Person', 'TABLE', N'StateProvince', 'CONSTRAINT', N'PK_StateProvince_StateProvinceID'
 GO
+-- Create Extended Property MS_Description on [Person].[StateProvince]
+Print 'Create Extended Property MS_Description on [Person].[StateProvince]'
+GO
 EXEC sp_addextendedproperty N'MS_Description', N'Clustered index created by a primary key constraint.', 'SCHEMA', N'Person', 'TABLE', N'StateProvince', 'INDEX', N'PK_StateProvince_StateProvinceID'
+GO
+-- Add Default Constraint DF_StateProvince_IsOnlyStateProvinceFlag to [Person].[StateProvince]
+Print 'Add Default Constraint DF_StateProvince_IsOnlyStateProvinceFlag to [Person].[StateProvince]'
 GO
 ALTER TABLE [Person].[StateProvince]
 	ADD
 	CONSTRAINT [DF_StateProvince_IsOnlyStateProvinceFlag]
 	DEFAULT ((1)) FOR [IsOnlyStateProvinceFlag]
 GO
+-- Create Extended Property MS_Description on [Person].[StateProvince]
+Print 'Create Extended Property MS_Description on [Person].[StateProvince]'
+GO
 EXEC sp_addextendedproperty N'MS_Description', N'Default constraint value of 1 (TRUE)', 'SCHEMA', N'Person', 'TABLE', N'StateProvince', 'CONSTRAINT', N'DF_StateProvince_IsOnlyStateProvinceFlag'
+GO
+-- Add Default Constraint DF_StateProvince_ModifiedDate to [Person].[StateProvince]
+Print 'Add Default Constraint DF_StateProvince_ModifiedDate to [Person].[StateProvince]'
 GO
 ALTER TABLE [Person].[StateProvince]
 	ADD
 	CONSTRAINT [DF_StateProvince_ModifiedDate]
 	DEFAULT (getdate()) FOR [ModifiedDate]
 GO
+-- Create Extended Property MS_Description on [Person].[StateProvince]
+Print 'Create Extended Property MS_Description on [Person].[StateProvince]'
+GO
 EXEC sp_addextendedproperty N'MS_Description', N'Default constraint value of GETDATE()', 'SCHEMA', N'Person', 'TABLE', N'StateProvince', 'CONSTRAINT', N'DF_StateProvince_ModifiedDate'
+GO
+-- Add Default Constraint DF_StateProvince_rowguid to [Person].[StateProvince]
+Print 'Add Default Constraint DF_StateProvince_rowguid to [Person].[StateProvince]'
 GO
 ALTER TABLE [Person].[StateProvince]
 	ADD
 	CONSTRAINT [DF_StateProvince_rowguid]
 	DEFAULT (newid()) FOR [rowguid]
 GO
+-- Create Extended Property MS_Description on [Person].[StateProvince]
+Print 'Create Extended Property MS_Description on [Person].[StateProvince]'
+GO
 EXEC sp_addextendedproperty N'MS_Description', N'Default constraint value of NEWID()', 'SCHEMA', N'Person', 'TABLE', N'StateProvince', 'CONSTRAINT', N'DF_StateProvince_rowguid'
+GO
+-- Create Foreign Key FK_StateProvince_CountryRegion_CountryRegionCode on [Person].[StateProvince]
+Print 'Create Foreign Key FK_StateProvince_CountryRegion_CountryRegionCode on [Person].[StateProvince]'
 GO
 ALTER TABLE [Person].[StateProvince]
 	WITH CHECK
@@ -51,7 +80,13 @@ ALTER TABLE [Person].[StateProvince]
 	CHECK CONSTRAINT [FK_StateProvince_CountryRegion_CountryRegionCode]
 
 GO
+-- Create Extended Property MS_Description on [Person].[StateProvince]
+Print 'Create Extended Property MS_Description on [Person].[StateProvince]'
+GO
 EXEC sp_addextendedproperty N'MS_Description', N'Foreign key constraint referencing CountryRegion.CountryRegionCode.', 'SCHEMA', N'Person', 'TABLE', N'StateProvince', 'CONSTRAINT', N'FK_StateProvince_CountryRegion_CountryRegionCode'
+GO
+-- Create Foreign Key FK_StateProvince_SalesTerritory_TerritoryID on [Person].[StateProvince]
+Print 'Create Foreign Key FK_StateProvince_SalesTerritory_TerritoryID on [Person].[StateProvince]'
 GO
 ALTER TABLE [Person].[StateProvince]
 	WITH CHECK
@@ -61,41 +96,86 @@ ALTER TABLE [Person].[StateProvince]
 	CHECK CONSTRAINT [FK_StateProvince_SalesTerritory_TerritoryID]
 
 GO
+-- Create Extended Property MS_Description on [Person].[StateProvince]
+Print 'Create Extended Property MS_Description on [Person].[StateProvince]'
+GO
 EXEC sp_addextendedproperty N'MS_Description', N'Foreign key constraint referencing SalesTerritory.TerritoryID.', 'SCHEMA', N'Person', 'TABLE', N'StateProvince', 'CONSTRAINT', N'FK_StateProvince_SalesTerritory_TerritoryID'
+GO
+-- Create Index AK_StateProvince_Name on [Person].[StateProvince]
+Print 'Create Index AK_StateProvince_Name on [Person].[StateProvince]'
 GO
 CREATE UNIQUE NONCLUSTERED INDEX [AK_StateProvince_Name]
 	ON [Person].[StateProvince] ([Name])
-	ON [PRIMARY]
+GO
+-- Create Extended Property MS_Description on [Person].[StateProvince]
+Print 'Create Extended Property MS_Description on [Person].[StateProvince]'
 GO
 EXEC sp_addextendedproperty N'MS_Description', N'Unique nonclustered index.', 'SCHEMA', N'Person', 'TABLE', N'StateProvince', 'INDEX', N'AK_StateProvince_Name'
 GO
+-- Create Index AK_StateProvince_rowguid on [Person].[StateProvince]
+Print 'Create Index AK_StateProvince_rowguid on [Person].[StateProvince]'
+GO
 CREATE UNIQUE NONCLUSTERED INDEX [AK_StateProvince_rowguid]
 	ON [Person].[StateProvince] ([rowguid])
-	ON [PRIMARY]
+GO
+-- Create Extended Property MS_Description on [Person].[StateProvince]
+Print 'Create Extended Property MS_Description on [Person].[StateProvince]'
 GO
 EXEC sp_addextendedproperty N'MS_Description', N'Unique nonclustered index. Used to support replication samples.', 'SCHEMA', N'Person', 'TABLE', N'StateProvince', 'INDEX', N'AK_StateProvince_rowguid'
 GO
+-- Create Index AK_StateProvince_StateProvinceCode_CountryRegionCode on [Person].[StateProvince]
+Print 'Create Index AK_StateProvince_StateProvinceCode_CountryRegionCode on [Person].[StateProvince]'
+GO
 CREATE UNIQUE NONCLUSTERED INDEX [AK_StateProvince_StateProvinceCode_CountryRegionCode]
 	ON [Person].[StateProvince] ([StateProvinceCode], [CountryRegionCode])
-	ON [PRIMARY]
+GO
+-- Create Extended Property MS_Description on [Person].[StateProvince]
+Print 'Create Extended Property MS_Description on [Person].[StateProvince]'
 GO
 EXEC sp_addextendedproperty N'MS_Description', N'Unique nonclustered index.', 'SCHEMA', N'Person', 'TABLE', N'StateProvince', 'INDEX', N'AK_StateProvince_StateProvinceCode_CountryRegionCode'
 GO
+-- Create Extended Property MS_Description on [Person].[StateProvince]
+Print 'Create Extended Property MS_Description on [Person].[StateProvince]'
+GO
 EXEC sp_addextendedproperty N'MS_Description', N'ISO standard country or region code. Foreign key to CountryRegion.CountryRegionCode. ', 'SCHEMA', N'Person', 'TABLE', N'StateProvince', 'COLUMN', N'CountryRegionCode'
+GO
+-- Create Extended Property MS_Description on [Person].[StateProvince]
+Print 'Create Extended Property MS_Description on [Person].[StateProvince]'
 GO
 EXEC sp_addextendedproperty N'MS_Description', N'0 = StateProvinceCode exists. 1 = StateProvinceCode unavailable, using CountryRegionCode.', 'SCHEMA', N'Person', 'TABLE', N'StateProvince', 'COLUMN', N'IsOnlyStateProvinceFlag'
 GO
+-- Create Extended Property MS_Description on [Person].[StateProvince]
+Print 'Create Extended Property MS_Description on [Person].[StateProvince]'
+GO
 EXEC sp_addextendedproperty N'MS_Description', N'Date and time the record was last updated.', 'SCHEMA', N'Person', 'TABLE', N'StateProvince', 'COLUMN', N'ModifiedDate'
+GO
+-- Create Extended Property MS_Description on [Person].[StateProvince]
+Print 'Create Extended Property MS_Description on [Person].[StateProvince]'
 GO
 EXEC sp_addextendedproperty N'MS_Description', N'State or province description.', 'SCHEMA', N'Person', 'TABLE', N'StateProvince', 'COLUMN', N'Name'
 GO
+-- Create Extended Property MS_Description on [Person].[StateProvince]
+Print 'Create Extended Property MS_Description on [Person].[StateProvince]'
+GO
 EXEC sp_addextendedproperty N'MS_Description', N'ROWGUIDCOL number uniquely identifying the record. Used to support a merge replication sample.', 'SCHEMA', N'Person', 'TABLE', N'StateProvince', 'COLUMN', N'rowguid'
+GO
+-- Create Extended Property MS_Description on [Person].[StateProvince]
+Print 'Create Extended Property MS_Description on [Person].[StateProvince]'
 GO
 EXEC sp_addextendedproperty N'MS_Description', N'ISO standard state or province code.', 'SCHEMA', N'Person', 'TABLE', N'StateProvince', 'COLUMN', N'StateProvinceCode'
 GO
+-- Create Extended Property MS_Description on [Person].[StateProvince]
+Print 'Create Extended Property MS_Description on [Person].[StateProvince]'
+GO
 EXEC sp_addextendedproperty N'MS_Description', N'Primary key for StateProvince records.', 'SCHEMA', N'Person', 'TABLE', N'StateProvince', 'COLUMN', N'StateProvinceID'
 GO
+-- Create Extended Property MS_Description on [Person].[StateProvince]
+Print 'Create Extended Property MS_Description on [Person].[StateProvince]'
+GO
 EXEC sp_addextendedproperty N'MS_Description', N'ID of the territory in which the state or province is located. Foreign key to SalesTerritory.SalesTerritoryID.', 'SCHEMA', N'Person', 'TABLE', N'StateProvince', 'COLUMN', N'TerritoryID'
+GO
+-- Create Extended Property MS_Description on [Person].[StateProvince]
+Print 'Create Extended Property MS_Description on [Person].[StateProvince]'
 GO
 EXEC sp_addextendedproperty N'MS_Description', N'State and province lookup table.', 'SCHEMA', N'Person', 'TABLE', N'StateProvince', NULL, NULL
 GO

@@ -1,5 +1,8 @@
-SET ANSI_NULLS ON
+﻿SET ANSI_NULLS ON
 SET QUOTED_IDENTIFIER ON
+GO
+-- Create Trigger [Sales].[uSalesOrderHeader]
+Print 'Create Trigger [Sales].[uSalesOrderHeader]'
 GO
 
 CREATE TRIGGER [Sales].[uSalesOrderHeader] ON [Sales].[SalesOrderHeader] 
@@ -70,6 +73,9 @@ BEGIN
         EXECUTE [dbo].[uspLogError];
     END CATCH;
 END;
+GO
+-- Create Extended Property MS_Description on [Sales].[uSalesOrderHeader]
+Print 'Create Extended Property MS_Description on [Sales].[uSalesOrderHeader]'
 GO
 EXEC sp_addextendedproperty N'MS_Description', N'AFTER UPDATE trigger that updates the RevisionNumber and ModifiedDate columns in the SalesOrderHeader table.Updates the SalesYTD column in the SalesPerson and SalesTerritory tables.', 'SCHEMA', N'Sales', 'TABLE', N'SalesOrderHeader', 'TRIGGER', N'uSalesOrderHeader'
 GO

@@ -1,6 +1,9 @@
-SET ANSI_NULLS ON
+﻿SET ANSI_NULLS ON
 SET QUOTED_IDENTIFIER ON
-SET ANSI_PADDING ON
+
+GO
+-- Create Table [Person].[PersonPhone]
+Print 'Create Table [Person].[PersonPhone]'
 GO
 CREATE TABLE [Person].[PersonPhone] (
 		[BusinessEntityID]      [int] NOT NULL,
@@ -11,19 +14,33 @@ CREATE TABLE [Person].[PersonPhone] (
 		PRIMARY KEY
 		CLUSTERED
 		([BusinessEntityID], [PhoneNumber], [PhoneNumberTypeID])
-	ON [PRIMARY]
-) ON [PRIMARY]
+)
+GO
+-- Create Extended Property MS_Description on [Person].[PersonPhone]
+Print 'Create Extended Property MS_Description on [Person].[PersonPhone]'
 GO
 EXEC sp_addextendedproperty N'MS_Description', N'Primary key (clustered) constraint', 'SCHEMA', N'Person', 'TABLE', N'PersonPhone', 'CONSTRAINT', N'PK_PersonPhone_BusinessEntityID_PhoneNumber_PhoneNumberTypeID'
 GO
+-- Create Extended Property MS_Description on [Person].[PersonPhone]
+Print 'Create Extended Property MS_Description on [Person].[PersonPhone]'
+GO
 EXEC sp_addextendedproperty N'MS_Description', N'Clustered index created by a primary key constraint.', 'SCHEMA', N'Person', 'TABLE', N'PersonPhone', 'INDEX', N'PK_PersonPhone_BusinessEntityID_PhoneNumber_PhoneNumberTypeID'
+GO
+-- Add Default Constraint DF_PersonPhone_ModifiedDate to [Person].[PersonPhone]
+Print 'Add Default Constraint DF_PersonPhone_ModifiedDate to [Person].[PersonPhone]'
 GO
 ALTER TABLE [Person].[PersonPhone]
 	ADD
 	CONSTRAINT [DF_PersonPhone_ModifiedDate]
 	DEFAULT (getdate()) FOR [ModifiedDate]
 GO
+-- Create Extended Property MS_Description on [Person].[PersonPhone]
+Print 'Create Extended Property MS_Description on [Person].[PersonPhone]'
+GO
 EXEC sp_addextendedproperty N'MS_Description', N'Default constraint value of GETDATE()', 'SCHEMA', N'Person', 'TABLE', N'PersonPhone', 'CONSTRAINT', N'DF_PersonPhone_ModifiedDate'
+GO
+-- Create Foreign Key FK_PersonPhone_Person_BusinessEntityID on [Person].[PersonPhone]
+Print 'Create Foreign Key FK_PersonPhone_Person_BusinessEntityID on [Person].[PersonPhone]'
 GO
 ALTER TABLE [Person].[PersonPhone]
 	WITH CHECK
@@ -33,7 +50,13 @@ ALTER TABLE [Person].[PersonPhone]
 	CHECK CONSTRAINT [FK_PersonPhone_Person_BusinessEntityID]
 
 GO
+-- Create Extended Property MS_Description on [Person].[PersonPhone]
+Print 'Create Extended Property MS_Description on [Person].[PersonPhone]'
+GO
 EXEC sp_addextendedproperty N'MS_Description', N'Foreign key constraint referencing Person.BusinessEntityID.', 'SCHEMA', N'Person', 'TABLE', N'PersonPhone', 'CONSTRAINT', N'FK_PersonPhone_Person_BusinessEntityID'
+GO
+-- Create Foreign Key FK_PersonPhone_PhoneNumberType_PhoneNumberTypeID on [Person].[PersonPhone]
+Print 'Create Foreign Key FK_PersonPhone_PhoneNumberType_PhoneNumberTypeID on [Person].[PersonPhone]'
 GO
 ALTER TABLE [Person].[PersonPhone]
 	WITH CHECK
@@ -43,21 +66,44 @@ ALTER TABLE [Person].[PersonPhone]
 	CHECK CONSTRAINT [FK_PersonPhone_PhoneNumberType_PhoneNumberTypeID]
 
 GO
+-- Create Extended Property MS_Description on [Person].[PersonPhone]
+Print 'Create Extended Property MS_Description on [Person].[PersonPhone]'
+GO
 EXEC sp_addextendedproperty N'MS_Description', N'Foreign key constraint referencing PhoneNumberType.PhoneNumberTypeID.', 'SCHEMA', N'Person', 'TABLE', N'PersonPhone', 'CONSTRAINT', N'FK_PersonPhone_PhoneNumberType_PhoneNumberTypeID'
+GO
+-- Create Index IX_PersonPhone_PhoneNumber on [Person].[PersonPhone]
+Print 'Create Index IX_PersonPhone_PhoneNumber on [Person].[PersonPhone]'
 GO
 CREATE NONCLUSTERED INDEX [IX_PersonPhone_PhoneNumber]
 	ON [Person].[PersonPhone] ([PhoneNumber])
-	ON [PRIMARY]
+GO
+-- Create Extended Property MS_Description on [Person].[PersonPhone]
+Print 'Create Extended Property MS_Description on [Person].[PersonPhone]'
 GO
 EXEC sp_addextendedproperty N'MS_Description', N'Nonclustered index.', 'SCHEMA', N'Person', 'TABLE', N'PersonPhone', 'INDEX', N'IX_PersonPhone_PhoneNumber'
 GO
+-- Create Extended Property MS_Description on [Person].[PersonPhone]
+Print 'Create Extended Property MS_Description on [Person].[PersonPhone]'
+GO
 EXEC sp_addextendedproperty N'MS_Description', N'Business entity identification number. Foreign key to Person.BusinessEntityID.', 'SCHEMA', N'Person', 'TABLE', N'PersonPhone', 'COLUMN', N'BusinessEntityID'
+GO
+-- Create Extended Property MS_Description on [Person].[PersonPhone]
+Print 'Create Extended Property MS_Description on [Person].[PersonPhone]'
 GO
 EXEC sp_addextendedproperty N'MS_Description', N'Date and time the record was last updated.', 'SCHEMA', N'Person', 'TABLE', N'PersonPhone', 'COLUMN', N'ModifiedDate'
 GO
+-- Create Extended Property MS_Description on [Person].[PersonPhone]
+Print 'Create Extended Property MS_Description on [Person].[PersonPhone]'
+GO
 EXEC sp_addextendedproperty N'MS_Description', N'Telephone number identification number.', 'SCHEMA', N'Person', 'TABLE', N'PersonPhone', 'COLUMN', N'PhoneNumber'
 GO
+-- Create Extended Property MS_Description on [Person].[PersonPhone]
+Print 'Create Extended Property MS_Description on [Person].[PersonPhone]'
+GO
 EXEC sp_addextendedproperty N'MS_Description', N'Kind of phone number. Foreign key to PhoneNumberType.PhoneNumberTypeID.', 'SCHEMA', N'Person', 'TABLE', N'PersonPhone', 'COLUMN', N'PhoneNumberTypeID'
+GO
+-- Create Extended Property MS_Description on [Person].[PersonPhone]
+Print 'Create Extended Property MS_Description on [Person].[PersonPhone]'
 GO
 EXEC sp_addextendedproperty N'MS_Description', N'Telephone number and type of a person.', 'SCHEMA', N'Person', 'TABLE', N'PersonPhone', NULL, NULL
 GO

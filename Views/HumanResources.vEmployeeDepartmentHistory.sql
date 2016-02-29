@@ -1,3 +1,6 @@
+﻿-- Create View [HumanResources].[vEmployeeDepartmentHistory]
+Print 'Create View [HumanResources].[vEmployeeDepartmentHistory]'
+GO
 SET ANSI_NULLS ON
 SET QUOTED_IDENTIFIER ON
 GO
@@ -25,6 +28,9 @@ FROM [HumanResources].[Employee] e
     ON edh.[DepartmentID] = d.[DepartmentID] 
     INNER JOIN [HumanResources].[Shift] s
     ON s.[ShiftID] = edh.[ShiftID];
+GO
+-- Create Extended Property MS_Description on [HumanResources].[vEmployeeDepartmentHistory]
+Print 'Create Extended Property MS_Description on [HumanResources].[vEmployeeDepartmentHistory]'
 GO
 EXEC sp_addextendedproperty N'MS_Description', N'Returns employee name and current and previous departments.', 'SCHEMA', N'HumanResources', 'VIEW', N'vEmployeeDepartmentHistory', NULL, NULL
 GO

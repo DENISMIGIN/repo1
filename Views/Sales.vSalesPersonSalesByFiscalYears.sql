@@ -1,3 +1,6 @@
+﻿-- Create View [Sales].[vSalesPersonSalesByFiscalYears]
+Print 'Create View [Sales].[vSalesPersonSalesByFiscalYears]'
+GO
 SET ANSI_NULLS ON
 SET QUOTED_IDENTIFIER ON
 GO
@@ -35,6 +38,9 @@ PIVOT
     FOR [FiscalYear] 
     IN ([2002], [2003], [2004])
 ) AS pvt;
+GO
+-- Create Extended Property MS_Description on [Sales].[vSalesPersonSalesByFiscalYears]
+Print 'Create Extended Property MS_Description on [Sales].[vSalesPersonSalesByFiscalYears]'
 GO
 EXEC sp_addextendedproperty N'MS_Description', N'Uses PIVOT to return aggregated sales information for each sales representative.', 'SCHEMA', N'Sales', 'VIEW', N'vSalesPersonSalesByFiscalYears', NULL, NULL
 GO

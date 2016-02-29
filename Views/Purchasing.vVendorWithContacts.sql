@@ -1,3 +1,6 @@
+﻿-- Create View [Purchasing].[vVendorWithContacts]
+Print 'Create View [Purchasing].[vVendorWithContacts]'
+GO
 SET ANSI_NULLS ON
 SET QUOTED_IDENTIFIER ON
 GO
@@ -29,6 +32,9 @@ FROM [Purchasing].[Vendor] v
 	ON pp.[BusinessEntityID] = p.[BusinessEntityID]
 	LEFT OUTER JOIN [Person].[PhoneNumberType] pnt
 	ON pnt.[PhoneNumberTypeID] = pp.[PhoneNumberTypeID];
+GO
+-- Create Extended Property MS_Description on [Purchasing].[vVendorWithContacts]
+Print 'Create Extended Property MS_Description on [Purchasing].[vVendorWithContacts]'
 GO
 EXEC sp_addextendedproperty N'MS_Description', N'Vendor (company) names  and the names of vendor employees to contact.', 'SCHEMA', N'Purchasing', 'VIEW', N'vVendorWithContacts', NULL, NULL
 GO

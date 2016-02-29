@@ -1,5 +1,8 @@
-SET ANSI_NULLS ON
+﻿SET ANSI_NULLS ON
 SET QUOTED_IDENTIFIER ON
+GO
+-- Create Trigger [HumanResources].[dEmployee]
+Print 'Create Trigger [HumanResources].[dEmployee]'
 GO
 
 CREATE TRIGGER [HumanResources].[dEmployee] ON [HumanResources].[Employee] 
@@ -26,6 +29,9 @@ BEGIN
         END
     END;
 END;
+GO
+-- Create Extended Property MS_Description on [HumanResources].[dEmployee]
+Print 'Create Extended Property MS_Description on [HumanResources].[dEmployee]'
 GO
 EXEC sp_addextendedproperty N'MS_Description', N'INSTEAD OF DELETE trigger which keeps Employees from being deleted.', 'SCHEMA', N'HumanResources', 'TABLE', N'Employee', 'TRIGGER', N'dEmployee'
 GO

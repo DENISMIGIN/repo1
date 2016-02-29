@@ -1,5 +1,8 @@
-SET ANSI_NULLS ON
+﻿SET ANSI_NULLS ON
 SET QUOTED_IDENTIFIER ON
+GO
+-- Create Function [dbo].[ufnGetContactInformation]
+Print 'Create Function [dbo].[ufnGetContactInformation]'
 GO
 
 CREATE FUNCTION [dbo].[ufnGetContactInformation](@PersonID int)
@@ -72,7 +75,13 @@ BEGIN
 	RETURN;
 END;
 GO
+-- Create Extended Property MS_Description on [dbo].[ufnGetContactInformation]
+Print 'Create Extended Property MS_Description on [dbo].[ufnGetContactInformation]'
+GO
 EXEC sp_addextendedproperty N'MS_Description', N'Table value function returning the first name, last name, job title and contact type for a given contact.', 'SCHEMA', N'dbo', 'FUNCTION', N'ufnGetContactInformation', NULL, NULL
+GO
+-- Create Extended Property MS_Description on [dbo].[ufnGetContactInformation]
+Print 'Create Extended Property MS_Description on [dbo].[ufnGetContactInformation]'
 GO
 EXEC sp_addextendedproperty N'MS_Description', N'Input parameter for the table value function ufnGetContactInformation. Enter a valid PersonID from the Person.Contact table.', 'SCHEMA', N'dbo', 'FUNCTION', N'ufnGetContactInformation', 'PARAMETER', N'@PersonID'
 GO

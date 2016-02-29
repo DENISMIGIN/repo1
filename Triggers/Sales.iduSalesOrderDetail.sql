@@ -1,5 +1,8 @@
-SET ANSI_NULLS ON
+﻿SET ANSI_NULLS ON
 SET QUOTED_IDENTIFIER ON
+GO
+-- Create Trigger [Sales].[iduSalesOrderDetail]
+Print 'Create Trigger [Sales].[iduSalesOrderDetail]'
 GO
 
 CREATE TRIGGER [Sales].[iduSalesOrderDetail] ON [Sales].[SalesOrderDetail] 
@@ -85,6 +88,9 @@ BEGIN
         EXECUTE [dbo].[uspLogError];
     END CATCH;
 END;
+GO
+-- Create Extended Property MS_Description on [Sales].[iduSalesOrderDetail]
+Print 'Create Extended Property MS_Description on [Sales].[iduSalesOrderDetail]'
 GO
 EXEC sp_addextendedproperty N'MS_Description', N'AFTER INSERT, DELETE, UPDATE trigger that inserts a row in the TransactionHistory table, updates ModifiedDate in SalesOrderDetail and updates the SalesOrderHeader.SubTotal column.', 'SCHEMA', N'Sales', 'TABLE', N'SalesOrderDetail', 'TRIGGER', N'iduSalesOrderDetail'
 GO

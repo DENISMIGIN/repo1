@@ -1,3 +1,6 @@
+﻿-- Create View [Person].[vAdditionalContactInfo]
+Print 'Create View [Person].[vAdditionalContactInfo]'
+GO
 SET ANSI_NULLS ON
 SET QUOTED_IDENTIFIER ON
 GO
@@ -49,6 +52,9 @@ OUTER APPLY [AdditionalContactInfo].nodes(
     'declare namespace ci="http://schemas.microsoft.com/sqlserver/2004/07/adventure-works/ContactInfo"; 
     /ci:AdditionalContactInfo') AS ContactInfo(ref) 
 WHERE [AdditionalContactInfo] IS NOT NULL;
+GO
+-- Create Extended Property MS_Description on [Person].[vAdditionalContactInfo]
+Print 'Create Extended Property MS_Description on [Person].[vAdditionalContactInfo]'
 GO
 EXEC sp_addextendedproperty N'MS_Description', N'Displays the contact name and content from each element in the xml column AdditionalContactInfo for that person.', 'SCHEMA', N'Person', 'VIEW', N'vAdditionalContactInfo', NULL, NULL
 GO
