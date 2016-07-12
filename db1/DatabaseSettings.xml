@@ -1,0 +1,6 @@
+<DatabaseSettings>
+  <Collation>SQL_Latin1_General_CP1_CI_AS</Collation>
+  <ServerVersion>Sql2014</ServerVersion>
+  <ServerName>ND\SQL2014</ServerName>
+  <DatabaseName>db1</DatabaseName>
+</DatabaseSettings>
