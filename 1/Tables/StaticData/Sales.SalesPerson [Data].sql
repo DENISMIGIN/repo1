@@ -1,0 +1,22 @@
+﻿-- =======================================================
+-- Synchronization script for table: [Sales].[SalesPerson]
+-- =======================================================
+Print 'Synchronization script for table: [Sales].[SalesPerson]'
+
+INSERT INTO [Sales].[SalesPerson] ([BusinessEntityID], [TerritoryID], [SalesQuota], [Bonus], [CommissionPct], [SalesYTD], [SalesLastYear], [ModifiedDate]) VALUES (274, NULL, NULL, 0.0000, 0.0000, 559697.5639, 0.0000, '20101228 00:00:00.000')
+INSERT INTO [Sales].[SalesPerson] ([BusinessEntityID], [TerritoryID], [SalesQuota], [Bonus], [CommissionPct], [SalesYTD], [SalesLastYear], [ModifiedDate]) VALUES (275, 2, 300000.0000, 4100.0000, 0.0120, 3763178.1787, 1750406.4785, '20110524 00:00:00.000')
+INSERT INTO [Sales].[SalesPerson] ([BusinessEntityID], [TerritoryID], [SalesQuota], [Bonus], [CommissionPct], [SalesYTD], [SalesLastYear], [ModifiedDate]) VALUES (276, 4, 250000.0000, 2000.0000, 0.0150, 4251368.5497, 1439156.0291, '20110524 00:00:00.000')
+INSERT INTO [Sales].[SalesPerson] ([BusinessEntityID], [TerritoryID], [SalesQuota], [Bonus], [CommissionPct], [SalesYTD], [SalesLastYear], [ModifiedDate]) VALUES (277, 3, 250000.0000, 2500.0000, 0.0150, 3189418.3662, 1997186.2037, '20110524 00:00:00.000')
+INSERT INTO [Sales].[SalesPerson] ([BusinessEntityID], [TerritoryID], [SalesQuota], [Bonus], [CommissionPct], [SalesYTD], [SalesLastYear], [ModifiedDate]) VALUES (278, 6, 250000.0000, 500.0000, 0.0100, 1453719.4653, 1620276.8966, '20110524 00:00:00.000')
+INSERT INTO [Sales].[SalesPerson] ([BusinessEntityID], [TerritoryID], [SalesQuota], [Bonus], [CommissionPct], [SalesYTD], [SalesLastYear], [ModifiedDate]) VALUES (279, 5, 300000.0000, 6700.0000, 0.0100, 2315185.6110, 1849640.9418, '20110524 00:00:00.000')
+INSERT INTO [Sales].[SalesPerson] ([BusinessEntityID], [TerritoryID], [SalesQuota], [Bonus], [CommissionPct], [SalesYTD], [SalesLastYear], [ModifiedDate]) VALUES (280, 1, 250000.0000, 5000.0000, 0.0100, 1352577.1325, 1927059.1780, '20110524 00:00:00.000')
+INSERT INTO [Sales].[SalesPerson] ([BusinessEntityID], [TerritoryID], [SalesQuota], [Bonus], [CommissionPct], [SalesYTD], [SalesLastYear], [ModifiedDate]) VALUES (281, 4, 250000.0000, 3550.0000, 0.0100, 2458535.6169, 2073505.9999, '20110524 00:00:00.000')
+INSERT INTO [Sales].[SalesPerson] ([BusinessEntityID], [TerritoryID], [SalesQuota], [Bonus], [CommissionPct], [SalesYTD], [SalesLastYear], [ModifiedDate]) VALUES (282, 6, 250000.0000, 5000.0000, 0.0150, 2604540.7172, 2038234.6549, '20110524 00:00:00.000')
+INSERT INTO [Sales].[SalesPerson] ([BusinessEntityID], [TerritoryID], [SalesQuota], [Bonus], [CommissionPct], [SalesYTD], [SalesLastYear], [ModifiedDate]) VALUES (283, 1, 250000.0000, 3500.0000, 0.0120, 1573012.9383, 1371635.3158, '20110524 00:00:00.000')
+INSERT INTO [Sales].[SalesPerson] ([BusinessEntityID], [TerritoryID], [SalesQuota], [Bonus], [CommissionPct], [SalesYTD], [SalesLastYear], [ModifiedDate]) VALUES (284, 1, 300000.0000, 3900.0000, 0.0190, 1576562.1966, 0.0000, '20120923 00:00:00.000')
+INSERT INTO [Sales].[SalesPerson] ([BusinessEntityID], [TerritoryID], [SalesQuota], [Bonus], [CommissionPct], [SalesYTD], [SalesLastYear], [ModifiedDate]) VALUES (285, NULL, NULL, 0.0000, 0.0000, 172524.4512, 0.0000, '20130307 00:00:00.000')
+INSERT INTO [Sales].[SalesPerson] ([BusinessEntityID], [TerritoryID], [SalesQuota], [Bonus], [CommissionPct], [SalesYTD], [SalesLastYear], [ModifiedDate]) VALUES (286, 9, 250000.0000, 5650.0000, 0.0180, 1421810.9242, 2278548.9776, '20130523 00:00:00.000')
+INSERT INTO [Sales].[SalesPerson] ([BusinessEntityID], [TerritoryID], [SalesQuota], [Bonus], [CommissionPct], [SalesYTD], [SalesLastYear], [ModifiedDate]) VALUES (287, NULL, NULL, 0.0000, 0.0000, 519905.9320, 0.0000, '20120409 00:00:00.000')
+INSERT INTO [Sales].[SalesPerson] ([BusinessEntityID], [TerritoryID], [SalesQuota], [Bonus], [CommissionPct], [SalesYTD], [SalesLastYear], [ModifiedDate]) VALUES (288, 8, 250000.0000, 75.0000, 0.0180, 1827066.7118, 1307949.7917, '20130523 00:00:00.000')
+INSERT INTO [Sales].[SalesPerson] ([BusinessEntityID], [TerritoryID], [SalesQuota], [Bonus], [CommissionPct], [SalesYTD], [SalesLastYear], [ModifiedDate]) VALUES (289, 10, 250000.0000, 5150.0000, 0.0200, 4116871.2277, 1635823.3967, '20120523 00:00:00.000')
+INSERT INTO [Sales].[SalesPerson] ([BusinessEntityID], [TerritoryID], [SalesQuota], [Bonus], [CommissionPct], [SalesYTD], [SalesLastYear], [ModifiedDate]) VALUES (290, 7, 250000.0000, 985.0000, 0.0160, 3121616.3202, 2396539.7601, '20120523 00:00:00.000')
