@@ -1,0 +1,38 @@
+﻿SET ANSI_NULLS ON
+SET QUOTED_IDENTIFIER ON
+GO
+-- Create function [dbo].[ufnGetSalesOrderStatusText]
+Print 'Create function [dbo].[ufnGetSalesOrderStatusText]'
+GO
+
+CREATE FUNCTION [dbo].[ufnGetSalesOrderStatusText](@Status [tinyint])
+RETURNS [nvarchar](15) 
+AS 
+-- Returns the sales order status text representation for the status value.
+BEGIN
+    DECLARE @ret [nvarchar](15);
+
+    SET @ret = 
+        CASE @Status
+            WHEN 1 THEN 'In process'
+            WHEN 2 THEN 'Approved'
+            WHEN 3 THEN 'Backordered'
+            WHEN 4 THEN 'Rejected'
+            WHEN 5 THEN 'Shipped'
+            WHEN 6 THEN 'Cancelled'
+            ELSE '** Invalid **'
+        END;
+    
+    RETURN @ret
+END;
+GO
+-- Create extended property MS_Description on [dbo].[ufnGetSalesOrderStatusText]
+Print 'Create extended property MS_Description on [dbo].[ufnGetSalesOrderStatusText]'
+GO
+EXEC sp_addextendedproperty N'MS_Description', N'Scalar function returning the text representation of the Status column in the SalesOrderHeader table.', 'SCHEMA', N'dbo', 'FUNCTION', N'ufnGetSalesOrderStatusText', NULL, NULL
+GO
+-- Create extended property MS_Description on [dbo].[ufnGetSalesOrderStatusText]
+Print 'Create extended property MS_Description on [dbo].[ufnGetSalesOrderStatusText]'
+GO
+EXEC sp_addextendedproperty N'MS_Description', N'Input parameter for the scalar function ufnGetSalesOrderStatusText. Enter a valid integer.', 'SCHEMA', N'dbo', 'FUNCTION', N'ufnGetSalesOrderStatusText', 'PARAMETER', N'@Status'
+GO
