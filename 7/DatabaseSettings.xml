@@ -1,6 +1,0 @@
-<DatabaseSettings>
-  <Collation>SQL_Latin1_General_CP1_CI_AS</Collation>
-  <ServerVersion>Sql2014</ServerVersion>
-  <ServerName>.\sql2014</ServerName>
-  <DatabaseName>AdventureWorks2014</DatabaseName>
-</DatabaseSettings>
